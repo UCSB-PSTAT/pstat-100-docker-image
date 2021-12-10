@@ -12,7 +12,8 @@ USER $NB_UID
 RUN conda update -n base conda && \
     pip install nb2pdf && \
     pip install python-csv && \
-    pip install zipfile38
+    pip install zipfile38 && \ 
+    pip install pandas == 1.3.4
 
 RUN conda update python && \
     pip install vdiff
@@ -62,8 +63,7 @@ RUN pip install PTable && \
     pip install pytest-custom-report
 
 # Install otter-grader
-RUN pip install otter-grader==3.2.0 && \ 
-    pip install pandas == 1.3.4
+RUN pip install otter-grader==3.2.0
 
 RUN jupyter lab build && \
     fix-permissions $CONDA_DIR && \
