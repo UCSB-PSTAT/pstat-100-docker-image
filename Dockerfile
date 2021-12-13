@@ -13,7 +13,7 @@ RUN conda update -n base conda && \
     pip install nb2pdf && \
     pip install python-csv && \
     pip install zipfile38 && \ 
-    pip install pandas == 1.3.4
+    pip install pandas 
 
 RUN conda update python && \
     pip install vdiff
