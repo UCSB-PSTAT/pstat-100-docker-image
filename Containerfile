@@ -11,6 +11,7 @@ RUN pip install datascience \
     nb2pdf \
     PTable \
     pytest-custom-report \
+    scikit-learn \
     vdiff \
     zipfile38  
 
@@ -28,12 +29,14 @@ RUN \
     jupyter labextension install @jupyterlab/toc --clean 
 
 RUN mamba install -c conda-forge nodejs \
+        altair \
         hypothesis \
         nltk \
         mock \
         mplcursors  \
         pytest  \
         spacy \
-        tweepy
+        tweepy \
+        vega_datasets
 
 USER $NB_USER
