@@ -25,8 +25,7 @@ RUN \
     jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
     jupyter nbextensions_configurator disable --sys-prefix && \
     jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib@0.7.2 --no-build && \
-    jupyter labextension install @jupyterlab/toc --clean 
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib@0.7.2 --clean 
 
 RUN mamba install -c conda-forge nodejs \
         altair \
