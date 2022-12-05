@@ -17,8 +17,7 @@ RUN pip install datascience \
 
 RUN \
     # Jupyter Extensions
-    pip install jupyter_contrib_nbextensions && \
-    jupyter contrib nbextension install --sys-prefix && \
+    conda install -c conda-forge jupyter_contrib_nbextensions && \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
@@ -27,7 +26,6 @@ RUN \
 RUN mamba install -c conda-forge nodejs \
         altair \
         hypothesis \
-        jupyter_nbextensions_configurator \
         nltk \
         mock \
         mplcursors  \
