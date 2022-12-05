@@ -7,6 +7,7 @@ USER root
 RUN pip install datascience \
     ipympl \
     jsonschema==3.2.0 \
+    jupyter_nbextensions_configurator \
     otter-grader \
     nb2pdf \
     PTable \
@@ -22,7 +23,6 @@ RUN \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
-    jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
     jupyter nbextensions_configurator disable --sys-prefix && \
     jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib@0.7.2 --clean 
