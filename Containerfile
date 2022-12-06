@@ -17,15 +17,11 @@ RUN pip install datascience \
 
 RUN \
     # Jupyter Extensions
-    pip install jupyter_contrib_nbextensions && \
-    jupyter contrib nbextension install --sys-prefix && \
+    conda install -c conda-forge jupyter_contrib_nbextensions && \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
-    jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
-    jupyter nbextensions_configurator disable --sys-prefix && \
-    jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib@0.7.2 --clean 
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib --clean 
 
 RUN mamba install -c conda-forge nodejs \
         altair \
