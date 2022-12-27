@@ -6,7 +6,7 @@ USER root
 
 RUN pip install datascience \
     ipympl \
-    jsonschema==3.2.0 \
+    jsonschema \
     otter-grader \
     nb2pdf \
     PTable \
