@@ -42,7 +42,7 @@ RUN mamba install -c conda-forge nodejs \
         tweepy \
         vega_datasets
 
-# Install Pytorch via conda with CPU resources (no cuda in GCP) 
-RUN conda install pytorch torchvision torchaudio cpuonly -c pytorch
+# Install Pytorch via mamba with CPU resources (no cuda in GCP) 
+RUN mamba install pytorch torchvision torchaudio cpuonly -c pytorch
 
 USER $NB_USER
