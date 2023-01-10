@@ -13,7 +13,15 @@ RUN pip install datascience \
     pytest-custom-report \
     scikit-learn \
     vdiff \
-    zipfile38  
+    zipfile38 \
+    pydot \
+    graphviz \
+    seaborn \
+    xgboost \
+    Scrapy \
+    tensorflow \
+    keras \
+    bokeh
 
 RUN \
     # Jupyter Extensions
@@ -33,5 +41,8 @@ RUN mamba install -c conda-forge nodejs \
         spacy \
         tweepy \
         vega_datasets
+
+# Install Pytorch via mamba with CPU resources (no cuda in GCP) 
+RUN mamba install pytorch torchvision torchaudio cpuonly -c pytorch
 
 USER $NB_USER
