@@ -25,7 +25,7 @@ RUN pip install datascience \
 
 RUN \
     # Jupyter Extensions
-    conda install -c conda-forge jupyter_contrib_nbextensions && \
+    mamba install -c conda-forge jupyter_contrib_nbextensions && \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
