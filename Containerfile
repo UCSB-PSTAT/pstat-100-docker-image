@@ -16,6 +16,7 @@ RUN pip install datascience \
     vdiff \
     zipfile38 \
     pydot \
+    plotly \
     graphviz \
     seaborn \
     xgboost \
