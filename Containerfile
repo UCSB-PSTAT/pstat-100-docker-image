@@ -11,10 +11,12 @@ RUN pip install datascience \
     nb2pdf \
     PTable \
     pytest-custom-report \
+    scipy \
     scikit-learn \
     vdiff \
     zipfile38 \
     pydot \
+    plotly \
     graphviz \
     seaborn \
     xgboost \
