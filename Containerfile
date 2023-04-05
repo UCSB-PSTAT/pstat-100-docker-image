@@ -4,6 +4,10 @@ LABEL maintainer="LSIT Systems <lsitops@lsit.ucsb.edu>"
 
 USER root
 
+RUN apt-get update && \
+    apt-get install -y texlive-full lmodern python3-dev libbz2-dev libxt-dev nano && \
+    apt-get clean
+
 RUN pip install datascience \
     ipympl \
     jsonschema \
