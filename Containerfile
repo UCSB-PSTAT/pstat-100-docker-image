@@ -23,6 +23,7 @@ RUN pip install datascience \
     plotly \
     graphviz \
     seaborn \
+    statsmodels \
     xgboost \
     Scrapy \
     tensorflow \
