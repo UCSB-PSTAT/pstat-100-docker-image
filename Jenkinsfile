@@ -32,6 +32,9 @@ pipeline {
                     steps {
                         sh 'podman run -it --rm localhost/$IMAGE_NAME python -c "import numpy; import pandas; import altair; import datascience; import matplotlib; import sklearn; sklearn.show_versions(); import spacy; import tweepy; import bokeh.io; import xgboost; import scrapy; import tensorflow; import torch; import pydot; import scipy; import seaborn; import plotly.express; import nb2pdf; import statsmodels"'
                         sh 'podman run -it --rm localhost/$IMAGE_NAME python -m pytest --pyargs spacy'
+                        sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME which rstudio'
+                        sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -q -e "getRversion() >= \\"4.1.3\\"" | tee /dev/stderr | grep -q "TRUE"'
+                        sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -e "library(\"ggthemes\");library(\"gridExtra\");library(\"kableExtra\");library(\"ottr\");library(\"pander\");library(\"reshape2\");library(\"tidybayes\");library(\"tidyverse\")"'
                         sh 'podman run -d --name=$IMAGE_NAME --rm -p 8888:8888 localhost/$IMAGE_NAME start-notebook.sh --NotebookApp.token="jenkinstest"'
                         sh 'sleep 10 && curl -v http://localhost:8888/lab?token=jenkinstest 2>&1 | grep -P "HTTP\\S+\\s200\\s+[\\w\\s]+\\s*$"'
                         sh 'curl -v http://localhost:8888/tree?token=jenkinstest 2>&1 | grep -P "HTTP\\S+\\s200\\s+[\\w\\s]+\\s*$"'
