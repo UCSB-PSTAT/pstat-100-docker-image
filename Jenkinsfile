@@ -37,6 +37,7 @@ pipeline {
                         sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -e "library(\"ggthemes\");library(\"gridExtra\");library(\"kableExtra\");library(\"ottr\");library(\"pander\");library(\"reshape2\");library(\"tidybayes\");library(\"tidyverse\")"'
                         sh 'podman run -d --name=$IMAGE_NAME --rm -p 8888:8888 localhost/$IMAGE_NAME start-notebook.sh --NotebookApp.token="jenkinstest"'
                         sh 'sleep 10 && curl -v http://localhost:8888/lab?token=jenkinstest 2>&1 | grep -P "HTTP\\S+\\s200\\s+[\\w\\s]+\\s*$"'
+                        sh 'sleep 10 && curl -v http://localhost:8888/rstudio?token=jenkinstest 2>&1 | grep -P "HTTP\\S+\\s[1-3][0-9][0-9]\\s+[\\w\\s]+\\s*$"'
                         sh 'curl -v http://localhost:8888/tree?token=jenkinstest 2>&1 | grep -P "HTTP\\S+\\s200\\s+[\\w\\s]+\\s*$"'
                     }
                     post {
