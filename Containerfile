@@ -1,4 +1,4 @@
-FROM ucsb/jupyter-base:latest
+FROM ucsb/rstudio-base:latest
 
 LABEL maintainer="LSIT Systems <lsitops@lsit.ucsb.edu>"
 
@@ -51,5 +51,8 @@ RUN mamba install -c conda-forge nodejs \
 
 # Install Pytorch via mamba with CPU resources (no cuda in GCP) 
 RUN mamba install pytorch torchvision torchaudio cpuonly -c pytorch
+
+# Install R Packages
+RUN R -e "install.packages(c('ggthemes', 'gridExtra', 'kableExtra', 'pander', 'ottr', 'reshape2', 'tidybayes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 USER $NB_USER
