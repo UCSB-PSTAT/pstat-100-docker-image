@@ -31,12 +31,12 @@ RUN pip install datascience \
     bokeh
 
 # Jupyter Extensions
-RUN mamba install -c conda-forge jupyter_contrib_nbextensions && \
+RUN conda install -c conda-forge jupyter_contrib_nbextensions && \
     jupyter nbextension enable toc2/main --sys-prefix && \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix
 
-RUN mamba install -c conda-forge nodejs \
+RUN conda install -c conda-forge nodejs \
         altair \
         hypothesis \
         nltk \
@@ -47,8 +47,8 @@ RUN mamba install -c conda-forge nodejs \
         tweepy \
         vega_datasets
 
-# Install Pytorch via mamba with CPU resources (no cuda in GCP) 
-RUN mamba install pytorch torchvision torchaudio cpuonly -c pytorch
+# Install Pytorch via conda with CPU resources (no cuda in GCP) 
+RUN conda install pytorch torchvision torchaudio cpuonly -c pytorch
 
 # Install R Packages
 RUN R -e "install.packages(c('ggthemes', 'gridExtra', 'kableExtra', 'pander', 'ottr', 'reshape2', 'tidybayes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
