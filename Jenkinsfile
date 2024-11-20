@@ -1,7 +1,7 @@
 pipeline {
     agent none
     triggers {
-        upstream(upstreamProjects: 'UCSB-PSTAT GitHub/jupyter-base/main', threshold: hudson.model.Result.SUCCESS)
+        upstream(upstreamProjects: 'UCSB-PSTAT GitHub/base-rstudio/main', threshold: hudson.model.Result.SUCCESS)
     }
     environment {
         IMAGE_NAME = 'pstat100'
