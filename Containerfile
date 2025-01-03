@@ -30,12 +30,6 @@ RUN pip install datascience \
     keras \
     bokeh
 
-# Jupyter Extensions
-RUN conda install -c conda-forge jupyter_contrib_nbextensions && \
-    jupyter nbextension enable toc2/main --sys-prefix && \
-    jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
-    jupyter nbextension enable table_beautifier/main --sys-prefix
-
 RUN conda install -y nodejs \
         altair \
         cmdstan \
@@ -44,7 +38,7 @@ RUN conda install -y nodejs \
         mock \
         mplcursors  \
         pytest  \
-        r-bayesrules \
+        r::r-bayesrules \
 	r-ggdist \
 	r-ggthemes \
         r-gam \
