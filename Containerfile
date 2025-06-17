@@ -46,7 +46,7 @@ RUN conda install -y nodejs \
         r-kableextra \
 	r-leaps \
         r-pander \
-	#r-palmerpenguins \
+	r-palmerpenguins \
         r-umap \
         r-tidybayes \
         spacy \
