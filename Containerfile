@@ -16,6 +16,7 @@ RUN pip install datascience \
     PTable \
     pytest-custom-report \
     scipy \
+    ml-datasets \ 
     scikit-learn \
     vdiff \
     zipfile38 \
