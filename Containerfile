@@ -57,7 +57,7 @@ RUN conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
 RUN chown -Rf jovyan /opt/conda/bin/cmdstan && \ 
     R -e "install.packages(c('cmdstanr'), repos = 'https://mc-stan.org/r-packages/', Ncpus = parallel::detectCores())" && \
     R -e "install.packages(c('bayesrules', 'palmerpenguins', 'pander', 'ottr', 'tidybayes', 'rstanarm', 'coda', 'mvtnorm', 'devtools', 'loo', 'dagitty', 'shape'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" && \
-    R -e "devtools::install_github('rmcelreath/rethinking')" 
+    R -e "pak::pkg_install('rmcelreath/rethinking')" 
 
 ENV CMDSTAN /opt/conda/bin/cmdstan
 
