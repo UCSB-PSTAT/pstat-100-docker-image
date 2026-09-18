@@ -16,7 +16,7 @@ RUN pip install datascience \
     PTable \
     pytest-custom-report \
     scipy \
-    ml-datasets \ 
+    ml-datasets \
     scikit-learn \
     vdiff \
     zipfile38 \
@@ -56,7 +56,7 @@ RUN conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
 # Install all the deps for rethinking and other packages from CRAN to avoid R downgrades in anaconda. 
 RUN chown -Rf jovyan /opt/conda/bin/cmdstan && \ 
     R -e "install.packages(c('cmdstanr'), repos = 'https://mc-stan.org/r-packages/', Ncpus = parallel::detectCores())" && \
-    R -e "install.packages(c('bayesrules', 'palmerpenguins', 'pander', 'ottr', 'tidybayes', 'rstanarm', 'coda', 'mvtnorm', 'devtools', 'loo', 'dagitty', 'shape'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" && \
+    R -e "install.packages(c('bayesrules', 'coda', 'dagitty', 'devtools', 'ellmer', 'loo', 'mvtnorm', 'ottr', 'palmerpenguins', 'pander', 'ragnar', 'rstanarm', 'shape', 'tidybayes', 'tidyverse'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" && \
     R -e "pak::pkg_install('rmcelreath/rethinking')" 
 
 ENV CMDSTAN /opt/conda/bin/cmdstan
