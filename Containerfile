@@ -59,7 +59,7 @@ RUN conda install -y -c conda-forge "openssl>=3.2" && \
 # Install all the deps for rethinking and other packages from CRAN to avoid R downgrades in anaconda. 
 RUN chown -Rf jovyan /opt/conda/bin/cmdstan && \ 
     R -e "install.packages(c('cmdstanr'), repos = 'https://mc-stan.org/r-packages/', Ncpus = parallel::detectCores())" && \
-    R -e "install.packages(c('bayesrules', 'coda', 'dagitty', 'devtools', 'loo', 'mvtnorm', 'ottr', 'palmerpenguins', 'pander', 'ragnar', 'rstanarm', 'shape', 'tidybayes', 'tidyverse'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" && \
+    R -e "install.packages(c('bayesrules', 'coda', 'dagitty', 'devtools', 'ellmer', 'loo', 'mvtnorm', 'ottr', 'palmerpenguins', 'pander', 'ragnar', 'rstanarm', 'shape', 'tidybayes', 'tidyverse'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" && \
     R -e "pak::pkg_install('rmcelreath/rethinking')" 
 
 ENV CMDSTAN /opt/conda/bin/cmdstan
