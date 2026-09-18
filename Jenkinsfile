@@ -39,6 +39,16 @@ pipeline {
                 stage('Test') {
                     steps {
                         container('podman') {
+                            sh 'podman run --rm --pull=never localhost/$IMAGE_NAME ldd /opt/conda/lib/libcurl.so.4 | grep "/opt/conda/lib/.*libssl.so.3"'
+                            sh '''podman run --rm --pull=never localhost/$IMAGE_NAME R -e '
+                                v <- curl::curl_version()
+                                cat("Detected SSL Version:", v$ssl_version, "\n")
+                                if (grepl("OpenSSL/3[.][01][.]", v$ssl_version)) {
+                                    stop("CRITICAL: OpenSSL version is lower than 3.2.0")
+                                }
+                                library(ellmer)
+                                cat("SUCCESS: ellmer and OpenSSL 3.2+ loaded cleanly.\n")
+                            ' '''
                             sh 'podman run -it --rm localhost/$IMAGE_NAME python -c "import numpy; import pandas; import altair; import datascience; import matplotlib; import sklearn; sklearn.show_versions(); import spacy; import tweepy; import bokeh.io; import xgboost; import scrapy; import tensorflow; import torch; import pydot; import scipy; import ml_datasets; import seaborn; import plotly.express; import nb2pdf; import statsmodels"'
                             sh 'podman run -it --rm localhost/$IMAGE_NAME python -m pytest --pyargs spacy'
                             sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME which rstudio'
