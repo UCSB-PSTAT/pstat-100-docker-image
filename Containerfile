@@ -52,6 +52,9 @@ RUN conda install -y nodejs \
 
 # Install Pytorch via conda with CPU resources (no cuda in GCP) 
 RUN conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
+RUN conda install -y -c conda-forge "openssl>=3.2" && \
+    echo "/opt/conda/lib" > /etc/ld.so.conf.d/conda.conf && \
+    ldconfig
 
 # Install all the deps for rethinking and other packages from CRAN to avoid R downgrades in anaconda. 
 RUN chown -Rf jovyan /opt/conda/bin/cmdstan && \ 
